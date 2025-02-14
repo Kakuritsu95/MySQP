@@ -1,0 +1,13 @@
+.vscode
+
+
+#FRONTEND
+
+node_modules
+.editorconfig
+README.md
+.angular
+
+#BACKEND
+bin
+obj

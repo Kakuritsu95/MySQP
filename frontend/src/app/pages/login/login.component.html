@@ -1,0 +1,17 @@
+<form class="flex flex-col items-center">
+  <h2>Login</h2>
+  <div class="flex flex-col">
+    <label>username</label>
+    <input type="text" class="w-44 h-5 border" />
+  </div>
+  <div class="flex flex-col">
+    <label>username</label>
+    <input type="text" class="w-44 h-5 border" />
+  </div>
+  <div>
+    @for (pokemon of pokemons(); track pokemon.name) {
+    <p>{{ pokemon.name }}</p>
+    <a href="{{ pokemon.url }}">{{ pokemon.url }}</a>
+    }
+  </div>
+</form>
