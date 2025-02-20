@@ -17,7 +17,12 @@ public class SurveyController:Controller
     {
         var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
         Console.WriteLine(ipAddress);
-        Survey[] surveys = _dbContext.Surveys.ToArray();
+        Survey[] surveys = _dbContext.Surveys
+        .Include(s=>s.Questions)
+        .ThenInclude(q=>q.Answers).ToArray();
+        
+    
+
         return Ok(surveys);
     }
 
@@ -31,8 +36,10 @@ public class SurveyController:Controller
 
     [HttpPost]
     public ActionResult<Survey> CreateSurvey(SurveyDto surveyDto){
-            Survey newSurvey = new Survey(surveyDto.Name);
+            Survey newSurvey = new Survey(surveyDto.Title);
             newSurvey.AuthorId = surveyDto.OwnerId;
+            newSurvey.Description = "some description, doesnt really matter";
+            newSurvey.SurveyType = surveyDto.SurveyType.Value;
            _dbContext.Add(newSurvey);
            _dbContext.SaveChanges();        
       return Ok(newSurvey);

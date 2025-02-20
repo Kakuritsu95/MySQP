@@ -1,5 +1,10 @@
- public class SurveyDto {   
-    public string Name {get;set;}
+using System.ComponentModel.DataAnnotations;
+
+public class SurveyDto {   
+   [Required]
+    public string Title {get;set;}
+    
     public int OwnerId {get;set;}
+    public required SurveyType? SurveyType {get;set;}
 
  }
