@@ -7,6 +7,8 @@ public class ApplicationDbContext:DbContext
   public DbSet<Question> Questions {get;set;}
   public DbSet<Option> Options {get;set;}
 
+  public DbSet<Submission> Submission {get;set;}
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>()
